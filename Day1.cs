@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -57,17 +58,27 @@ namespace P7_CSH_1 {
             Console.WriteLine(person[1]);
             person[2] = "12345";
             Console.WriteLine(person[2]);
+            Person person2 = new Person("Günther2", "Manfred2", 123456);
+
+            IEnumerator en = person.GetEnumerator();
+            while (en.MoveNext()) {
+                Person pers = (Person)en.Current;
+                Console.WriteLine(pers[0]);
+            }
+            en.Reset();
         }
 
-        class Person {
+        class Person : IEnumerable {
             private string name;
             private string vorname;
             private int telefon;
+            public static List<Person> personen = new List<Person>();
 
             public Person(string name, string vorname, int telefon) {
                 this.name = name;
                 this.vorname = vorname;
                 this.telefon = telefon;
+                personen.Add(this);
             }
 
             public string this[string index] {
@@ -116,6 +127,10 @@ namespace P7_CSH_1 {
                             telefon = Convert.ToInt32(value); break;
                     }
                 }
+            }
+
+            public IEnumerator GetEnumerator() {
+                return personen.GetEnumerator();
             }
         }
     }
