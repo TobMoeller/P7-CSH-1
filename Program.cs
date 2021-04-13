@@ -12,7 +12,7 @@ namespace P7_CSH_1 {
     class Program {
         static void Main(string[] args) {
 
-            Day.days = new List<Day>() { new Day1() };
+            Day.days = new List<Day>() { new Day1(), new Day2() };
             Day.StartProg();
             Console.WriteLine("\n\n--- Ende ---");
             Console.ReadKey();
