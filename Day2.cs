@@ -99,8 +99,8 @@ namespace P7_CSH_1 {
                 StreamWriter streamWriter = new StreamWriter(filePath + $@"\{Regex.Replace(town, @"\s", "")}.csv", false);
 
                 //Regex regex = new Regex(@"[\d]{8};\d;" + "Mainz");
-                // 10010010;1;Postbank Ndl der Deutsche Bank;10559;Berlin;
-                MatchCollection matchCollection = Regex.Matches(wholeFile, @"[\d]{8};\d;(.*?);\d*;" + town);
+                // 10010010;1;Postbank Ndl der Deutsche Bank;10559;Frankfurt am Main;
+                MatchCollection matchCollection = Regex.Matches(wholeFile, @"[\d]{8};\d;(.*);\d*;" + town);
                 foreach (Match match in matchCollection) {
                     Console.WriteLine(match.Value);
                     string temp = match.Value.Remove(8);
